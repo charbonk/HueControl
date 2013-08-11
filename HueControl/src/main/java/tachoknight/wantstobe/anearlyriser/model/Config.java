@@ -1,177 +1,152 @@
 package tachoknight.wantstobe.anearlyriser.model;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-import java.util.*;
 
-public class Config
-{
-	@JsonProperty("portalservices")
-	private Boolean		portalservices;
-	@JsonProperty("gateway")
-	private String		gateway;
-	@JsonProperty("mac")
-	private String		mac;
-	@JsonProperty("swversion")
-	private Integer		swversion;
-	@JsonProperty("linkbutton")
-	private Boolean		linkbutton;
-	@JsonProperty("ipaddress")
-	private String		ipaddress;
-	@JsonProperty("proxyport")
-	private Integer		proxyport;
-	@JsonProperty("swupdate")
-	private Swupdate	swupdate;
-	@JsonProperty("netmask")
-	private String		netmask;
-	@JsonProperty("name")
-	private String		name;
-	@JsonProperty("dhcp")
-	private Boolean		dhcp;
+public class Config {
+	private Boolean portalservices;
+	private String gateway;
+	private String mac;
+	private Integer swversion;
+	private Boolean linkbutton;
+	private String ipaddress;
+	private Integer proxyport;
+	private Swupdate swupdate;
+	private String netmask;
+	private String name;
+	private Boolean dhcp;
 	@JsonProperty("UTC")
-	private String		UTC;
-	@JsonProperty("proxyaddress")
-	private String		proxyaddress;
-	@JsonProperty("whitelist")
-	private Whitelist	whitelist;
+	private String UTC;
+	private String proxyaddress;
+	private Whitelist whitelist;
 
-	public Boolean getPortalservices()
-	{
+	public Boolean getPortalservices() {
 		return portalservices;
 	}
 
-	public void setPortalservices(Boolean portalservices)
-	{
+	public void setPortalservices(Boolean portalservices) {
 		this.portalservices = portalservices;
 	}
 
-	public String getGateway()
-	{
+	public String getGateway() {
 		return gateway;
 	}
 
-	public void setGateway(String gateway)
-	{
+	public void setGateway(String gateway) {
 		this.gateway = gateway;
 	}
 
-	public String getMac()
-	{
+	public String getMac() {
 		return mac;
 	}
 
-	public void setMac(String mac)
-	{
+	public void setMac(String mac) {
 		this.mac = mac;
 	}
 
-	public Integer getSwversion()
-	{
+	public Integer getSwversion() {
 		return swversion;
 	}
 
-	public void setSwversion(Integer swversion)
-	{
+	public void setSwversion(Integer swversion) {
 		this.swversion = swversion;
 	}
 
-	public Boolean getLinkbutton()
-	{
+	public Boolean getLinkbutton() {
 		return linkbutton;
 	}
 
-	public void setLinkbutton(Boolean linkbutton)
-	{
+	public void setLinkbutton(Boolean linkbutton) {
 		this.linkbutton = linkbutton;
 	}
 
-	public String getIpaddress()
-	{
+	public String getIpaddress() {
 		return ipaddress;
 	}
 
-	public void setIpaddress(String ipaddress)
-	{
+	public void setIpaddress(String ipaddress) {
 		this.ipaddress = ipaddress;
 	}
 
-	public Integer getProxyport()
-	{
+	public Integer getProxyport() {
 		return proxyport;
 	}
 
-	public void setProxyport(Integer proxyport)
-	{
+	public void setProxyport(Integer proxyport) {
 		this.proxyport = proxyport;
 	}
 
-	public Swupdate getSwupdate()
-	{
+	public Swupdate getSwupdate() {
 		return swupdate;
 	}
 
-	public void setSwupdate(Swupdate swupdate)
-	{
+	public void setSwupdate(Swupdate swupdate) {
 		this.swupdate = swupdate;
 	}
 
-	public String getNetmask()
-	{
+	public String getNetmask() {
 		return netmask;
 	}
 
-	public void setNetmask(String netmask)
-	{
+	public void setNetmask(String netmask) {
 		this.netmask = netmask;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Boolean getDhcp()
-	{
+	public Boolean getDhcp() {
 		return dhcp;
 	}
 
-	public void setDhcp(Boolean dhcp)
-	{
+	public void setDhcp(Boolean dhcp) {
 		this.dhcp = dhcp;
 	}
 
-	public String getUTC()
-	{
+	public String getUTC() {
 		return UTC;
 	}
 
-	public void setUTC(String uTC)
-	{
+	public void setUTC(String uTC) {
 		UTC = uTC;
 	}
 
-	public String getProxyaddress()
-	{
+	public String getProxyaddress() {
 		return proxyaddress;
 	}
 
-	public void setProxyaddress(String proxyaddress)
-	{
+	public void setProxyaddress(String proxyaddress) {
 		this.proxyaddress = proxyaddress;
 	}
 
-	public Whitelist getWhitelist()
-	{
+	public Whitelist getWhitelist() {
 		return whitelist;
 	}
 
-	public void setWhitelist(Whitelist whitelist)
-	{
+	public void setWhitelist(Whitelist whitelist) {
 		this.whitelist = whitelist;
 	}
 
+	@Override
+	public String toString() {
+		return "\nConfig" + 
+				"\n   portalservices=" + portalservices + 
+				"\n   gateway=" + gateway + 
+				"\n   mac=" + mac + 
+				"\n   swversion=" + swversion + 
+				"\n   linkbutton=" + linkbutton + 
+				"\n   ipaddress=" + ipaddress + 
+				"\n   proxyport=" + proxyport + 
+				"\n   swupdate=" + swupdate + 
+				"\n   netmask=" + netmask + 
+				"\n   name=" + name + 
+				"\n   dhcp=" + dhcp + 
+				"\n   UTC=" + UTC + 
+				"\n   proxyaddress=" + proxyaddress + 
+				"\n   whitelist=" + whitelist + "]";
+	}
 }

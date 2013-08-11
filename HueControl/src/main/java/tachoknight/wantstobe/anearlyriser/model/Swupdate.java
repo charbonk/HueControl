@@ -1,57 +1,52 @@
 package tachoknight.wantstobe.anearlyriser.model;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-import java.util.*;
+public class Swupdate {
+	private String text;
+	private Boolean notify;
+	private Integer updatestate;
+	private String url;
 
-public class Swupdate
-{
-	@JsonProperty("text")
-	private String	text;
-	@JsonProperty("notify")
-	private Boolean	notify;
-	@JsonProperty("updatestate")
-	private Integer	updatestate;
-	@JsonProperty("url")
-	private String	url;
-
-	public String getText()
-	{
+	public String getText() {
 		return text;
 	}
 
-	public void setText(String text)
-	{
+	public void setText(String text) {
 		this.text = text;
 	}
 
-	public Boolean getNotify()
-	{
+	public Boolean getNotify() {
 		return notify;
 	}
 
-	public void setNotify(Boolean notify)
-	{
+	public void setNotify(Boolean notify) {
 		this.notify = notify;
 	}
 
-	public Integer getUpdatestate()
-	{
+	public Integer getUpdatestate() {
 		return updatestate;
 	}
 
-	public void setUpdatestate(Integer updatestate)
-	{
+	public void setUpdatestate(Integer updatestate) {
 		this.updatestate = updatestate;
 	}
 
-	public String getUrl()
-	{
+	public String getUrl() {
 		return url;
 	}
 
-	public void setUrl(String url)
-	{
+	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		return "\n    Swupdate" + 
+				"\n      text=" + text + 
+				"\n      notify=" + notify + 
+				"\n      updatestate=" + updatestate + 
+				"\n      url=" + url + "]";
+	}
+	
+
 
 }

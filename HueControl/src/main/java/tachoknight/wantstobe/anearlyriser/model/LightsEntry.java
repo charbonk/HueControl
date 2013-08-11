@@ -1,81 +1,72 @@
 package tachoknight.wantstobe.anearlyriser.model;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-import java.util.*;
+import java.util.Map;
 
-public class LightsEntry
-{
-	@JsonProperty("name")
-	private String				name;
-	@JsonProperty("state")
-	private State				state;
-	@JsonProperty("modelid")
-	private String				modelid;
-	@JsonProperty("swversion")
-	private Integer				swversion;
-	@JsonProperty("type")
-	private String				type;
-	@JsonProperty("pointsymbol")
-	private Map<String, String>	pointsymbol;
+public class LightsEntry {
+	private String name;
+	private State state;
+	private String modelid;
+	private Integer swversion;
+	private String type;
+	private Map<String, String> pointsymbol;
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public State getState()
-	{
+	public State getState() {
 		return state;
 	}
 
-	public void setState(State state)
-	{
+	public void setState(State state) {
 		this.state = state;
 	}
 
-	public String getModelid()
-	{
+	public String getModelid() {
 		return modelid;
 	}
 
-	public void setModelid(String modelid)
-	{
+	public void setModelid(String modelid) {
 		this.modelid = modelid;
 	}
 
-	public Integer getSwversion()
-	{
+	public Integer getSwversion() {
 		return swversion;
 	}
 
-	public void setSwversion(Integer swversion)
-	{
+	public void setSwversion(Integer swversion) {
 		this.swversion = swversion;
 	}
 
-	public String getType()
-	{
+	public String getType() {
 		return type;
 	}
 
-	public void setType(String type)
-	{
+	public void setType(String type) {
 		this.type = type;
 	}
 
-	public Map<String, String> getPointsymbol()
-	{
+	public Map<String, String> getPointsymbol() {
 		return pointsymbol;
 	}
 
-	public void setPointsymbol(Map<String, String> pointsymbol)
-	{
+	public void setPointsymbol(Map<String, String> pointsymbol) {
 		this.pointsymbol = pointsymbol;
+	}
+
+	@Override
+	public String toString() {
+		return "\nLightsEntry " + 
+				"\n  name=" + name + 
+				"\n  state=" + state + 
+				"\n  modelid=" + modelid + 
+				"\n  swversion=" + swversion + 
+				"\n  type=" + type + 
+				"\n  pointsymbol=" + pointsymbol + "";
 	}
 
 }

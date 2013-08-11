@@ -1,44 +1,31 @@
 package tachoknight.wantstobe.anearlyriser.model;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-import java.util.*;
+public class Command {
+	private Body body;
+	private String address;
+	private String method;
 
-public class Command
-{
-	@JsonProperty("body")
-	private Body	body;
-	@JsonProperty("address")
-	private String	address;
-	@JsonProperty("method")
-	private String	method;
-
-	public Body getBody()
-	{
+	public Body getBody() {
 		return body;
 	}
 
-	public void setBody(Body body)
-	{
+	public void setBody(Body body) {
 		this.body = body;
 	}
 
-	public String getAddress()
-	{
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address)
-	{
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public String getMethod()
-	{
+	public String getMethod() {
 		return method;
 	}
 
-	public void setMethod(String method)
-	{
+	public void setMethod(String method) {
 		this.method = method;
 	}
 

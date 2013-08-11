@@ -16,79 +16,123 @@ import tachoknight.wantstobe.anearlyriser.model.SchedulesEntry;
 import tachoknight.wantstobe.anearlyriser.model.State;
 import tachoknight.wantstobe.anearlyriser.model.SystemConfiguration;
 
-/**
- * Hello world!
- * 
- */
-public class App
-{
-	private static final Logger	logger	= LoggerFactory.getLogger(App.class);
+public class App {
+	private static final Logger logger = LoggerFactory.getLogger(App.class);
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) throws InterruptedException {
 		logger.info("And here we go....");
-		
+
 		/*
 		 * First we set up our lights factory
 		 */
-		LightsFactory lf = new LightsFactory("10.0.1.28", "newdeveloper");
+		LightsFactory lightsFactory = new LightsFactory("192.168.1.15", "newdeveloper");
 
 		/* Get a dump of the configuration */
-		SystemConfiguration sc = lf.getSystemConfiguration();
-		logger.info(sc.getConfig().getName());
+		SystemConfiguration systemConfiguration = lightsFactory.getSystemConfiguration();
+		logger.info("Config.Name : " + systemConfiguration.getConfig().getName());
+		logger.info("Config : " + systemConfiguration);
 
 		/* Get a map of the available lights */
-		Map<String, LightsEntry> lights = lf.getAllLights();
-		/* And loop through 'em for yucks */
-		for (Map.Entry<String, LightsEntry> entry : lights.entrySet())
-		{
+		Map<String, LightsEntry> lights = lightsFactory.getAllLights();
+
+		for (Map.Entry<String, LightsEntry> entry : lights.entrySet()) {
 			String key = entry.getKey();
 			LightsEntry value = entry.getValue();
 
 			logger.info("Light " + key + " - " + value.getName());
 		}
 
+		setBlue(lightsFactory, 1);
+		setBlue(lightsFactory, 2);
+		setBlue(lightsFactory, 3);
+		Thread.currentThread().sleep(500);
+		setRed(lightsFactory, 1);
+		setRed(lightsFactory, 2);
+		setRed(lightsFactory, 3);
+		Thread.currentThread().sleep(500);
+		setBlue(lightsFactory, 1);
+		setBlue(lightsFactory, 2);
+		setBlue(lightsFactory, 3);
+		Thread.currentThread().sleep(500);
+		setRed(lightsFactory, 1);
+		setRed(lightsFactory, 2);
+		setRed(lightsFactory, 3);
+		Thread.currentThread().sleep(500);
+		setBlue(lightsFactory, 1);
+		setBlue(lightsFactory, 2);
+		setBlue(lightsFactory, 3);
+		Thread.currentThread().sleep(500);
+		setRed(lightsFactory, 1);
+		setRed(lightsFactory, 2);
+		setRed(lightsFactory, 3);
+		Thread.currentThread().sleep(1000);
+
+		turnOff(lightsFactory, 1);
+		turnOff(lightsFactory, 2);
+		turnOff(lightsFactory, 3);
+		
+		
+		/* Scheduling demonstration */
+	//	playWithSchedules(lightsFactory);
+
+		System.out.println("DONE");
+	}
+
+	private static void turnOff(LightsFactory lightsFactory, int lightId){
 		/* Set a light */
 		State light1State = new State();
 		light1State.setOn(false);
-		light1State.setBri(124);
-		light1State.setHue(150);
-		light1State.setSat(200);
 
 		/* Note, the lights are 1-based, not 0. */
-		if (lf.setLightState(1, light1State) == false)
-		{
+		if (lightsFactory.setLightState(lightId, light1State) == false) {
 			logger.error("Hmm...didn't set the light");
 		}
+	}
+	
+	
+	private static void setBlue(LightsFactory lightsFactory, int lightId){
+		State light1State = new State();
+		light1State.setOn(true);
+		light1State.setBri(255);
+		light1State.setHue(46920);
+		light1State.setSat(255);
 
-		/* Scheduling demonstration */
-		playWithSchedules(lf);
-
-		System.out.println("Hello World!");
+		/* Note, the lights are 1-based, not 0. */
+		if (lightsFactory.setLightState(lightId, light1State) == false) {
+			logger.error("Hmm...didn't set the light");
+		}
 	}
 
-	private static void playWithSchedules(LightsFactory lf)
-	{
+	private static void setRed(LightsFactory lightsFactory, int lightId){
+		State light1State = new State();
+		light1State.setOn(true);
+		light1State.setBri(255);
+		light1State.setHue(0);
+		light1State.setSat(255);
+
+		/* Note, the lights are 1-based, not 0. */
+		if (lightsFactory.setLightState(lightId, light1State) == false) {
+			logger.error("Hmm...didn't set the light");
+		}
+	}
+	
+	
+	private static void playWithSchedules(LightsFactory lf) {
 		{
 			logger.info("Get the current schedule...");
-			
+
 			/* Get the current schedule */
 			Map<String, SchedulesEntry> schedules = lf.getSchedules();
 
-			for (Map.Entry<String, SchedulesEntry> entry : schedules.entrySet())
-			{
+			for (Map.Entry<String, SchedulesEntry> entry : schedules.entrySet()) {
 				String key = entry.getKey();
 				SchedulesEntry value = entry.getValue();
 
-				logger.info("Schedule " + key
-							+ " - \n\tName:"
-							+ value.getName()
-							+ "\n\tDescription:"
-							+ value.getDescription()
-							+ "\n\tDate and Time:"
-							+ value.getTime()
-							+ "\n\tCommand: "
-							+ value.getCommand());
+				logger.info("Schedule " + key + " - \n\tName:"
+						+ value.getName() + "\n\tDescription:"
+						+ value.getDescription() + "\n\tDate and Time:"
+						+ value.getTime() + "\n\tCommand: "
+						+ value.getCommand());
 			}
 		}
 
@@ -98,8 +142,7 @@ public class App
 		State light1State = new State();
 		light1State.setOn(false);
 
-		if (lf.setLightState(1, light1State) == false)
-		{
+		if (lf.setLightState(1, light1State) == false) {
 			logger.error("Hmm...didn't set the light for demonstrating scheduling");
 		}
 
@@ -120,7 +163,7 @@ public class App
 		DateTime dt = new DateTime(DateTimeZone.UTC);
 		/* Now add a minute */
 		DateTime newDT = dt.plusMinutes(1);
-		
+
 		/* And set the date and time in the format Hue wants */
 		se.setTime(newDT.toString("YYYY-MM-dd'T'hh:mm:ss"));
 
@@ -135,16 +178,18 @@ public class App
 		Body body = new Body();
 		body.setOn(true);
 		body.setBri(255);
-		/* According to the documentation, 10 = 1 second, so let's set it to go over a minute */
+		/*
+		 * According to the documentation, 10 = 1 second, so let's set it to go
+		 * over a minute
+		 */
 		body.setTransitiontime(10 * 60 * 5);
-		
+
 		/* And set the color in CIE */
 		List<Double> cieXY = new ArrayList<Double>();
 		cieXY.add(.651);
 		cieXY.add(.390);
 		body.setXy(cieXY);
-		
-		
+
 		command.setBody(body);
 		se.setCommand(command);
 
@@ -157,24 +202,19 @@ public class App
 
 		{
 			logger.info("Now getting the new schedule...");
-			
+
 			/* Get the current schedule */
 			Map<String, SchedulesEntry> schedules = lf.getSchedules();
 
-			for (Map.Entry<String, SchedulesEntry> entry : schedules.entrySet())
-			{
+			for (Map.Entry<String, SchedulesEntry> entry : schedules.entrySet()) {
 				String key = entry.getKey();
 				SchedulesEntry value = entry.getValue();
 
-				logger.info("Schedule " + key
-							+ " - \n\tName:"
-							+ value.getName()
-							+ "\n\tDescription:"
-							+ value.getDescription()
-							+ "\n\tDate and Time:"
-							+ value.getTime()
-							+ "\n\tCommand: "
-							+ value.getCommand().getBody());
+				logger.info("Schedule " + key + " - \n\tName:"
+						+ value.getName() + "\n\tDescription:"
+						+ value.getDescription() + "\n\tDate and Time:"
+						+ value.getTime() + "\n\tCommand: "
+						+ value.getCommand().getBody());
 			}
 		}
 

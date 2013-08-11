@@ -1,43 +1,31 @@
 package tachoknight.wantstobe.anearlyriser.model;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+public class WhitelistEntry {
+	private String lastUseDate;
+	private String createDate;
+	private String name;
 
-public class WhitelistEntry
-{
-	@JsonProperty("last use date")
-	private String	lastUseDate;
-	@JsonProperty("create date")
-	private String	createDate;
-	@JsonProperty("name")
-	private String	name;
-
-	public String getLastUseDate()
-	{
+	public String getLastUseDate() {
 		return lastUseDate;
 	}
 
-	public void setLastUseDate(String lastUseDate)
-	{
+	public void setLastUseDate(String lastUseDate) {
 		this.lastUseDate = lastUseDate;
 	}
 
-	public String getCreateDate()
-	{
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate)
-	{
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
